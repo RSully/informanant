@@ -1,0 +1,14 @@
+Converts text to links for contact info.
+
+Example:
+
+	<div id="holder">
+		<span class="email">test@test.com</span>
+		<span class="phone">555-555-5555</span>
+		<span class="twitter">@Twitter</span>
+	</div>
+	
+	$('#holder').informanant({'holder': 'span'});
+
+Arguments:
+	holder: HTML tag that data is held in within the container (Default = span)
