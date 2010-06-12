@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Demo</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script type="text/javascript">
+	/* Functions */
+	(function($){
+		$.fn.informanant = function(settings) {
+			var config = {'holder': 'span'};
+			if(settings) { $.extend(config, settings); }
+			this.each(function(){
+				$(this).find(config.holder).each(function(){
+					var itemClass = $(this).attr('class');
+					if(itemClass == 'email') {
+						$(this).wrap('<a title="Email us" href="mailto:' + ($(this).text()) + '" />');
+					} else if(itemClass == 'phone') {
+						$(this).wrap('<a title="Call us" href="tel:' + ($(this).text()) + '" />');
+					} else if(itemClass == 'twitter') {
+						$(this).wrap('<a title="Our Twitter" href="http://www.twitter.com/' + ($(this).text()) + '" />');
+					}
+				});
+			});
+			return this;
+		};
+	})(jQuery);
+
+	$(document).ready(function(){
+		$('#contact').informanant({'holder': 'span'});
+	});
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<div id="contact">
+			<span class="email">hello@halcyonlabs.net</span>
+			<span class="twitter">@HalcyonLabs</span>
+			<span class="phone">+1-555-555-5555</span>
+		</div>
+	</div>
+</body>
+</html>
